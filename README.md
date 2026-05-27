@@ -20,6 +20,9 @@
 </div>
 
 ---
+<img width="1916" height="895" alt="image" src="https://github.com/user-attachments/assets/5b7718c8-078c-4508-905b-5de83c7f5c7b" />
+
+---
 
 ## ✨ Why Homestead AI?
 
@@ -152,6 +155,16 @@ Homestead AI ships with **12 specialized agents**, each with defined roles, tool
 | 🔐 **Security** | Security Auditor | Strong | Vulnerability scanning, chaos engineering |
 | 🧠 **Data Engineer** | ML/Data | Standard | Data pipelines, model integration |
 | 🖥️ **Visual QA** | Visual Testing | Strong | Browser automation, accessibility |
+
+<img width="1916" height="895" alt="image" src="https://github.com/user-attachments/assets/acb79cf4-131b-4611-a6ff-63a1e126844c" />
+<img width="1915" height="897" alt="image" src="https://github.com/user-attachments/assets/5cd29083-1c7b-4526-b819-fd0488e98882" />
+<img width="1919" height="897" alt="image" src="https://github.com/user-attachments/assets/49d2a177-e4af-4382-b1b2-ea388b92b234" />
+<img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/3c9cc90e-0076-4654-95b0-d75d097c259a" />
+<img width="1916" height="901" alt="image" src="https://github.com/user-attachments/assets/937b9688-4b97-46cd-b533-09751ff88a06" />
+<img width="1917" height="894" alt="image" src="https://github.com/user-attachments/assets/4e53759a-4c75-4313-a44a-ccb8c8227f82" />
+<img width="1916" height="895" alt="image" src="https://github.com/user-attachments/assets/38bd562e-6417-47fc-a67a-843c2089de7e" />
+<img width="1916" height="896" alt="image" src="https://github.com/user-attachments/assets/c641ee81-e986-453f-a24a-b5b17692c51a" />
+
 
 ### Agent Tiers
 
