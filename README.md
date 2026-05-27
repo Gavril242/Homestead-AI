@@ -156,7 +156,7 @@ Homestead AI ships with **12 specialized agents**, each with defined roles, tool
 | 🧠 **Data Engineer** | ML/Data | Standard | Data pipelines, model integration |
 | 🖥️ **Visual QA** | Visual Testing | Strong | Browser automation, accessibility |
 
-<img width="1916" height="895" alt="image" src="https://github.com/user-attachments/assets/acb79cf4-131b-4611-a6ff-63a1e126844c" />
+<img width="1915" height="896" alt="image" src="https://github.com/user-attachments/assets/b3b9dfb3-dddc-422c-891f-c3756c047824" />
 <img width="1915" height="897" alt="image" src="https://github.com/user-attachments/assets/5cd29083-1c7b-4526-b819-fd0488e98882" />
 <img width="1919" height="897" alt="image" src="https://github.com/user-attachments/assets/49d2a177-e4af-4382-b1b2-ea388b92b234" />
 <img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/3c9cc90e-0076-4654-95b0-d75d097c259a" />
