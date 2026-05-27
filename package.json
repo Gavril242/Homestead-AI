@@ -1,0 +1,43 @@
+{
+  "name": "homestead-ai",
+  "version": "1.0.0",
+  "description": "Autonomous multi-agent engineering platform — orchestrates a team of AI agents to plan, build, test, and ship software",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/backend"],
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --experimental-sqlite --import tsx/esm apps/backend/src/server.js",
+    "dev": "node --experimental-sqlite --import tsx/esm --watch apps/backend/src/server.js",
+    "seed": "node --experimental-sqlite --import tsx/esm apps/backend/src/seed/run.js",
+    "vault:scan": "node apps/backend/src/brain/scan.js",
+    "test": "node apps/backend/smoke-test.mjs"
+  },
+  "keywords": [
+    "ai-agents",
+    "multi-agent",
+    "autonomous-coding",
+    "llm-orchestration",
+    "task-automation",
+    "software-engineering",
+    "kanban",
+    "knowledge-management",
+    "openai",
+    "anthropic",
+    "gemini",
+    "langchain",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/homestead-ai.git"
+  },
+  "author": "Homestead AI Contributors",
+  "homepage": "https://github.com/your-username/homestead-ai#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/homestead-ai/issues"
+  }
+}

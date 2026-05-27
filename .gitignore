@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+.npm
+
+# Environment files (NEVER commit real keys)
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Runtime data (generated per-instance, not source)
+apps/backend/data/entity-memory/
+apps/backend/data/prompt-metrics/
+apps/backend/data/vector-index.json
+apps/backend/data/vault/
+apps/backend/data/.snapshots/
+data/
+
+# Vault (user-specific knowledge base)
+vault/
+
+# Workspace directories (per-project work areas)
+homestead-workspaces/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+.homestead-*
+*.tmp
+*.bak
+
+# Test output
+coverage/
+.nyc_output/

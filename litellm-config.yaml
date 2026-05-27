@@ -1,0 +1,423 @@
+# LiteLLM Proxy — Homestead AI
+#
+# Run with: docker-compose up litellm
+# Admin UI:  http://localhost:4000/ui  (login with LITELLM_MASTER_KEY)
+#
+# All VIO models use the openai/ prefix (OpenAI-compatible gateway).
+# ssl_verify: false because VIO uses a self-signed cert.
+# Models are named vio-<slug> individually; purpose-* aliases bundle fallback chains.
+
+model_list:
+
+  # ─── VIO: GPT-5 family ──────────────────────────────────────────────────────
+
+  - model_name: vio-gpt5-high
+    litellm_params:
+      model: "openai/VIO:GPT-5-high"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-gpt5
+    litellm_params:
+      model: "openai/VIO:GPT-5"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-gpt51
+    litellm_params:
+      model: "openai/VIO:Gpt-5.1"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-gpt5-chat
+    litellm_params:
+      model: "openai/VIO:GPT 5-chat"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt5-medium
+    litellm_params:
+      model: "openai/VIO:GPT-5-medium"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt5-low
+    litellm_params:
+      model: "openai/VIO:GPT-5-low"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt5-mini
+    litellm_params:
+      model: "openai/VIO:GPT 5-mini"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-gpt5-nano
+    litellm_params:
+      model: "openai/VIO:GPT 5-nano"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-gpt53-codex
+    litellm_params:
+      model: "openai/VIO:GPT-5.3-Codex"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt4o
+    litellm_params:
+      model: "openai/VIO:GPT-4o"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt35-turbo
+    litellm_params:
+      model: "openai/VIO:GPT-3.5 Turbo"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-gpto3-mini
+    litellm_params:
+      model: "openai/VIO:GPT-o3-mini"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-gpt-oss-120b
+    litellm_params:
+      model: "openai/VIO:GPT-OSS-120B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-gpt-oss-20b
+    litellm_params:
+      model: "openai/VIO:GPT-OSS-20B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  # ─── VIO: Reasoning / research ──────────────────────────────────────────────
+
+  - model_name: vio-deepseek-r1
+    litellm_params:
+      model: "openai/VIO:DeepSeek R1"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-mai-ds-r1
+    litellm_params:
+      model: "openai/VIO:MAI-DS-R1"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-phi4-reasoning
+    litellm_params:
+      model: "openai/VIO:Phi-4-reasoning"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  # ─── VIO: Grok family ───────────────────────────────────────────────────────
+
+  - model_name: vio-grok3
+    litellm_params:
+      model: "openai/VIO:Grok-3"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-grok3-mini
+    litellm_params:
+      model: "openai/VIO:Grok-3-mini"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-grok4-fast
+    litellm_params:
+      model: "openai/VIO:Grok-4-fast-non-reasoning"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  # ─── VIO: Gemini via VIO ────────────────────────────────────────────────────
+
+  - model_name: vio-gemini-25-pro
+    litellm_params:
+      model: "openai/VIO:Gemini 2.5 Pro"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 10
+      ssl_verify: false
+
+  - model_name: vio-gemini-20-flash
+    litellm_params:
+      model: "openai/VIO:Gemini 2.0 Flash"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 20
+      ssl_verify: false
+
+  # ─── VIO: Claude family ─────────────────────────────────────────────────────
+
+  - model_name: vio-claude-46-opus
+    litellm_params:
+      model: "openai/VIO:Claude 4.6 Opus"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-claude-46-sonnet
+    litellm_params:
+      model: "openai/VIO:Claude 4.6 Sonnet"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-claude-45-opus
+    litellm_params:
+      model: "openai/VIO:Claude 4.5 Opus"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-claude-45-sonnet
+    litellm_params:
+      model: "openai/VIO:Claude 4.5 Sonnet"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  - model_name: vio-claude-35-sonnet
+    litellm_params:
+      model: "openai/VIO:Claude 3.5 Sonnet"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 50
+      ssl_verify: false
+
+  # ─── VIO: Qwen / open-source ────────────────────────────────────────────────
+
+  - model_name: vio-qwen3-coder-480b
+    litellm_params:
+      model: "openai/VIO:Qwen3-coder-480b-a35b-v1"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-qwen35-235b
+    litellm_params:
+      model: "openai/VIO:Qwen 3.5 235B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-llama31-8b
+    litellm_params:
+      model: "openai/VIO:LLaMA 3.1 8B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-llama3-405b
+    litellm_params:
+      model: "openai/VIO:Llama3 405B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-llama33-70b
+    litellm_params:
+      model: "openai/VIO:Meta LLaMA 3.3 70B"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 40
+      ssl_verify: false
+
+  # ─── VIO: Mistral ───────────────────────────────────────────────────────────
+
+  - model_name: vio-mistral-large2
+    litellm_params:
+      model: "openai/VIO:Mistral Large 2"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-mistral-large-2402
+    litellm_params:
+      model: "openai/VIO:Mistral Large 2402"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-pixtral-large
+    litellm_params:
+      model: "openai/VIO:Pixtral Large"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 20
+      ssl_verify: false
+
+  # ─── VIO: Amazon Nova ───────────────────────────────────────────────────────
+
+  - model_name: vio-nova-lite
+    litellm_params:
+      model: "openai/VIO:Nova Lite"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-nova-micro
+    litellm_params:
+      model: "openai/VIO:Nova Micro"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 60
+      ssl_verify: false
+
+  - model_name: vio-nova-premier
+    litellm_params:
+      model: "openai/VIO:Nova Premier"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  - model_name: vio-nova-pro
+    litellm_params:
+      model: "openai/VIO:Nova Pro v1"
+      api_base: https://vio.automotive-wan.com:446
+      api_key: os.environ/VIO_KEY_1
+      rpm: 30
+      ssl_verify: false
+
+  # ─── Gemini direct (fallback when VIO is exhausted) ─────────────────────────
+
+  - model_name: gemini-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_KEY_1
+      rpm: 5
+
+  - model_name: gemini-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_KEY_1
+      rpm: 10
+
+  # ─── Purpose-grouped aliases (what Homestead calls) ─────────────────────────
+
+  - model_name: purpose-plan
+    litellm_params:
+      model: vio-gpt5-high
+
+  - model_name: purpose-synthesize
+    litellm_params:
+      model: vio-gpt5-chat
+
+  - model_name: purpose-chat
+    litellm_params:
+      model: vio-gpt5-chat
+
+  - model_name: purpose-verify
+    litellm_params:
+      model: vio-gpt5-chat
+
+  - model_name: purpose-summarize
+    litellm_params:
+      model: vio-gpt5-medium
+
+# ─── Router settings ────────────────────────────────────────────────────────
+
+router_settings:
+  routing_strategy: usage-based-routing-v2
+  num_retries: 3
+  retry_after: 5
+  timeout: 120
+  allowed_fails: 2
+  cooldown_time: 60
+
+  fallbacks:
+    - purpose-plan:
+        - vio-gpt5-high
+        - vio-deepseek-r1
+        - vio-claude-46-opus
+        - vio-grok3
+        - gemini-pro
+    - purpose-synthesize:
+        - vio-gpt5-chat
+        - vio-gpt53-codex
+        - vio-claude-46-sonnet
+        - vio-qwen3-coder-480b
+        - gemini-flash
+    - purpose-chat:
+        - vio-gpt5-chat
+        - vio-gpt5-medium
+        - vio-gpt4o
+        - vio-grok3-mini
+        - gemini-flash
+    - purpose-verify:
+        - vio-gpt5-chat
+        - vio-gpt5-medium
+        - vio-claude-46-sonnet
+        - gemini-flash
+    - purpose-summarize:
+        - vio-gpt5-medium
+        - vio-gpt5-mini
+        - vio-grok3-mini
+        - gemini-flash
+
+# ─── LiteLLM settings ───────────────────────────────────────────────────────
+
+litellm_settings:
+  drop_params: true
+  set_verbose: false
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

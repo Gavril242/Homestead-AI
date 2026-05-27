@@ -1,0 +1,60 @@
+version: '3.9'
+
+services:
+  langfuse-db:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=langfuse
+    ports:
+      - "5432:5432"
+    volumes:
+      - langfuse_db_data:/var/lib/postgresql/data
+
+  langfuse-web:
+    image: langfuse/langfuse:2
+    depends_on:
+      - langfuse-db
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=my-secret-key-change-me
+      - DATABASE_URL=postgresql://postgres:postgres@langfuse-db:5432/langfuse
+      - SALT=my-salt-change-me
+      - TELEMETRY_ENABLED=false
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml
+    command: ["--config", "/app/config.yaml", "--port", "4000", "--num_workers", "4"]
+    environment:
+      VIO_KEY_1: "${VIO_KEY_1}"
+      VIO_KEY_2: "${VIO_KEY_2}"
+      VIO_KEY_3: "${VIO_KEY_3}"
+      GEMINI_KEY_1: "${GEMINI_KEY_1}"
+      GEMINI_KEY_2: "${GEMINI_KEY_2}"
+      LITELLM_MASTER_KEY: "${LITELLM_KEY:-sk-homestead-local}"
+    restart: unless-stopped
+
+  computer-use:
+    image: ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest
+    container_name: Homestead AI-computer-use
+    ports:
+      - "5900:5900"   # VNC
+      - "6080:6080"   # noVNC web UI
+      - "8080:8080"   # Internal API
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    restart: unless-stopped
+    profiles:
+      - computer-use   # opt-in: docker compose --profile computer-use up
+
+volumes:
+  langfuse_db_data:
