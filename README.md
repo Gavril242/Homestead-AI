@@ -1,3 +1,6 @@
+*Codebase will be ready soon!*
+
+
 <div align="center">
 
 # 🏠 Homestead AI
