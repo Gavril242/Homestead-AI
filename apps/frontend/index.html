@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Gavirila Homestead — Balanced v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#060209"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Gavirila"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #060209; color: #f8f0ff; font-family: Inter, system-ui, sans-serif; overflow: hidden; height: 100%; }
+  body.light { background: #fdf3e7; color: #2a1509; }
+  * { box-sizing: border-box; }
+  button, input, textarea { font-family: inherit; }
+  code { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  #root { width: 100vw; height: 100vh; display: flex; }
+  #stage { flex: 1; position: relative; overflow: hidden; }
+</style>
+</head>
+<body>
+<div id="root"><div id="stage"></div></div>
+
+<!-- React UMD — no integrity hash so CDN version drift doesn't break us -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+
+<!-- JSX is compiled server-side by @babel/core — no browser Babel needed -->
+<script src="g-core.jsx"></script>
+<script src="g-api.jsx"></script>
+<script src="g-shell.jsx"></script>
+<script src="g-porch.jsx"></script>
+<script src="g-chores.jsx"></script>
+<script src="g-kitchen.jsx"></script>
+<script src="g-rest.jsx"></script>
+<script src="g-reqs.jsx"></script>
+<script src="g-app.jsx"></script>
+
+<script>
+/* ── Script load error handling ── */
+(function() {
+  var failed = [];
+  function showBanner(msg) {
+    var el = document.getElementById('g-error-banner');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'g-error-banner';
+      el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#d32f2f;color:#fff;padding:12px 20px;font-family:Inter,sans-serif;font-size:14px;display:flex;flex-direction:column;gap:6px;';
+      document.body.prepend(el);
+    }
+    var line = document.createElement('div');
+    line.textContent = msg;
+    el.appendChild(line);
+  }
+  document.querySelectorAll('script[src$=".jsx"]').forEach(function(s) {
+    s.onerror = function() {
+      var name = s.src.split('/').pop();
+      console.error('Failed to load:', s.src);
+      failed.push(name);
+      showBanner('⚠ Failed to load script: ' + name);
+    };
+  });
+  window._showGError = showBanner;
+})();
+</script>
+
+<script>
+/* ── Error boundary component ── */
+var G_ErrorBoundary = (function() {
+  function Eb(props) { React.Component.call(this, props); this.state = { error: null }; }
+  Eb.prototype = Object.create(React.Component.prototype);
+  Eb.prototype.constructor = Eb;
+  Eb.getDerivedStateFromError = function(err) { return { error: err }; };
+  Eb.prototype.componentDidCatch = function(err, info) { console.error('[G_ErrorBoundary]', err, info); };
+  Eb.prototype.render = function() {
+    if (this.state.error) {
+      return React.createElement('div', { style: { background:'#d32f2f', color:'#fff', padding:'24px', margin:'20px', borderRadius:'8px', fontFamily:'Inter,sans-serif' } },
+        React.createElement('h2', { style: { margin:'0 0 8px' } }, 'Something went wrong'),
+        React.createElement('pre', { style: { whiteSpace:'pre-wrap', fontSize:'13px', opacity:0.9 } }, String(this.state.error)),
+        React.createElement('button', { onClick: function() { location.reload(); }, style: { marginTop:'12px', padding:'8px 20px', background:'#fff', color:'#d32f2f', border:'none', borderRadius:'4px', cursor:'pointer', fontWeight:600 } }, 'Reload')
+      );
+    }
+    return this.props.children;
+  };
+  return Eb;
+})();
+
+/* ── Mount with init guard ── */
+(function mount() {
+  try {
+    function Root() {
+      var size = React.useState({ w: window.innerWidth, h: window.innerHeight });
+      var sizeState = size[0], setSize = size[1];
+      React.useEffect(function() {
+        var onResize = function() { setSize({ w: window.innerWidth, h: window.innerHeight }); };
+        window.addEventListener('resize', onResize);
+        return function() { window.removeEventListener('resize', onResize); };
+      }, []);
+      return React.createElement(G_ErrorBoundary, null,
+        React.createElement(GavirilaApp, { width: sizeState.w, height: sizeState.h })
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('stage')).render(React.createElement(Root));
+  } catch (err) {
+    console.error('[mount] Fatal:', err);
+    var stage = document.getElementById('stage');
+    stage.innerHTML = '<div style="background:#d32f2f;color:#fff;padding:24px;margin:20px;border-radius:8px;font-family:Inter,sans-serif">'
+      + '<h2 style="margin:0 0 8px">Failed to start</h2>'
+      + '<pre style="white-space:pre-wrap;font-size:13px;opacity:0.9">' + String(err) + '</pre>'
+      + '<button onclick="location.reload()" style="margin-top:12px;padding:8px 20px;background:#fff;color:#d32f2f;border:none;border-radius:4px;cursor:pointer;font-weight:600">Reload</button>'
+      + '</div>';
+  }
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(err => console.warn('[sw] registration failed:', err));
+}
+// Forward gate:needs_review WS events to the service worker for push notifications
+window._gwForwardToSW = function(event) {
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage(event);
+  }
+};
+</script>
+</body>
+</html>

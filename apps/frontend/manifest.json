@@ -1,0 +1,21 @@
+{
+  "name": "Gavirila Homestead",
+  "short_name": "Gavirila",
+  "description": "AI agent orchestration workbench",
+  "theme_color": "#060209",
+  "background_color": "#060209",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23060209'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='serif' fill='%23ea5a1c'>G</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "developer"],
+  "screenshots": []
+}
