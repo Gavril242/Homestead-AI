@@ -383,7 +383,7 @@ The `misc/experimental/` directory contains promising features that are not yet 
 | `feature-pipeline.ts` | TypeScript version of the orchestration pipeline | Partial — needs migration from JS |
 | `computer-use.js` | Anthropic computer-use tool (Docker-based) | Working — requires Docker setup |
 | `browser_task.py` | Python browser automation script | Working — alternative to Playwright JS |
-| `afeela-shm.js` | Demo seed data for automotive SHM project | Complete — example project template |
+
 
 To use any experimental feature, copy it into the appropriate `src/` directory and update imports.
 
