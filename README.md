@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-22.5%2B-339933?logo=nodedotjs)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-E8A0BF.svg)](CONTRIBUTING.md)
-[![Stars](https://img.shields.io/github/stars/your-username/homestead-ai?style=social)](https://github.com/your-username/homestead-ai)
+[![Stars]()](https://github.com/Gavril242)
 
 **Homestead AI** orchestrates a team of specialized AI agents to plan, build, test, and ship software — autonomously. Think of it as an AI-powered engineering team that writes code, runs tests, files bugs, writes docs, and deploys — all from a single goal.
 
